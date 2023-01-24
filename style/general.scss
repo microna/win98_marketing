@@ -1,0 +1,213 @@
+// Variables
+$base-gray: #c0c0c0;
+$greenish-blue: #008083;
+$white: #fff;
+$black: #000;
+$selection-blue: #000084;
+$dark-line-gray: #848484;
+
+// Mixins
+@mixin size($w, $h) {
+	width: $w;
+	height: $h;
+}
+
+@mixin pos($pos, $cond, $fv, $sv) {
+	position: $pos;
+	@if $cond == "tl" {
+		top: $fv;
+		left: $sv;
+	} @else if $cond == "tr" {
+		top: $fv;
+		right: $sv;
+	} @else if $cond == "bl" {
+		bottom: $fv;
+		left: $sv;
+	} @else if $cond == "br" {
+		bottom: $fv;
+		right: $sv;
+	}
+}
+
+@mixin common-shadow($type) {
+	@if $type == "invert" {
+		box-shadow: inset 2px 2px 0 0 $black,
+						inset -2px -2px 0 0 $white;
+	} @else {
+		box-shadow: inset 2px 2px 0 0 $white,
+						inset -2px -2px 0 0 $black;
+	}
+}
+
+// Style
+body {
+	overflow: hidden;
+	
+	* {
+		font-size: 14px;
+		font-family: sans-serif;
+	}
+}
+
+.home-screen {
+	@include size(100vw, 100vh);
+	background-color: $greenish-blue;
+	position: relative;
+	overflow: hidden;
+	
+	.icons {
+		.list {
+			li {
+				padding: 15px 15px 10px 15px;
+				position: relative;
+				width: 100px;
+				
+				a {
+					text-decoration: none;
+					
+					img {
+						display: block;
+						margin: 0 auto;
+					}
+					
+					span {
+						color: $white;
+						display: block;
+						margin-top: 8px;
+						text-align: center;
+						word-wrap: break-word;
+					}
+					
+					input {
+						background-color: transparent;
+						border: 1px dotted $black;
+						color: $white;
+						display: none;
+						margin: 0 auto;
+						padding: 1.5px 1.5px 1.5px 3px;
+						width: 100%;
+						
+						&:focus {
+							user-select: all;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	.taskbar {
+		@include size(calc(100% + 4px), 40px);
+		@include pos(fixed, "bl", 0, -2px);
+		background-color: $base-gray;
+		box-shadow: inset 0 1px 0 0 $base-gray,
+						inset 0 2px 0 0 $white;
+		
+		.start-btn {
+			@include size(80px, 32px);
+			@include common-shadow("normal");
+			background-color: inherit;
+			cursor: pointer;
+			float: left;
+			margin: 4px 0 0 5px;
+			
+			.icon {
+				@include size(28px, 24px);
+				@include pos(relative, "tl", 5px, 4px);
+				background-image: url('https://bit.ly/2MXP4R4');
+				background-size: 90px;
+				background-position: -10px;
+				background-color: transparent;
+				display: inline-block;
+			}
+			
+			.text {
+				@include pos(relative, "tl", -2px, 8px);
+			}
+			
+			&:active {
+				@include common-shadow("invert");
+			}
+		}
+		
+		.date-viewer {
+			float: right;
+		}
+		
+		*::selection {
+ 			background: transparent;
+		}
+	}
+}
+
+.context-menu-list {
+	@include common-shadow("normal");
+	border-radius: 0;
+	background-color: $base-gray;
+	border: none;
+	padding: 3px;
+	
+	li {
+		background-color: transparent;
+		color: $black;
+		
+		&:hover {
+			background-color: $selection-blue;
+			
+			&::after {
+				filter: invert(1);
+			}
+		}
+		
+		&.context-menu-item:not(.context-menu-separator) {
+			padding: .3em 1em;
+		}
+		
+		&.context-menu-separator {
+			border-top: 1px solid $dark-line-gray;
+			border-bottom: 1px solid $white;
+			margin: 0.25em 0;
+		}
+	}
+}
+
+// Modal
+.modal {
+	@include size(calc(100% - 350px), 450px);
+	@include common-shadow("normal");
+	background-color: $base-gray;
+	border: 1px solid $base-gray;
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+	&.visible {
+		display: block;
+	}
+	
+	.content-wrapper {
+		.content-header {
+			background-color: $selection-blue;
+			padding: 5px;
+			
+			.buttons {
+				float: right;
+				
+				li {
+					display: inline-block;
+				}
+			}
+		}
+		
+		.content-body {
+			background-color: inherit;
+		}
+	}
+}
+
+// Helpers
+.clear {
+	clear: both;
+}
