@@ -49,6 +49,7 @@
     <input type="checkbox" id="windows-help-input" name="windows-help-input" /> 
     <input type="checkbox" id="windows-update-input" name="windows-update-input" /> 
     <input type="checkbox" id="windows-notepad-input" name="windows-notepad-input" />
+    <input type="checkbox" id="windows-winamp-input" name="windows-notepad-input" />
     <!-- <input type="checkbox" id="windows-minesweeper-input" name="windows-minesweeper-input" /> -->
     <input type="checkbox" id="windows-trash-input" name="windows-trash-input" />
 
@@ -106,7 +107,8 @@
         </label>
         <a target="_blank" href="https://lucidica.co.uk/blogs/" class="desktop-item"><span class="icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAHlBMVEUAAACAgID//7QAAADAwMD///8AgIAAAIAAgAAAAP+MXRRYAAAAAXRSTlMAQObYZgAAAAFiS0dEBfhv6ccAAAAHdElNRQfiBhoANyCM1dKOAAAAkUlEQVQoz2NgYBCEAQYoEFKCAEUDdAFhdAFHAzSBEGE0gVCoErBAWpKSorGxMVwgzT0jCUg5wwTU3Do62lAEIirTmpEFUl0yy8qMkAVcJdJmIgukhUh0TkcWSJzZkY4ioDYzo7wcxZaZM6YVIwsolVcWG6EIKBmD+MgCEIBTYCYETBpoFYQERFzgACJgjAQYGADW/1JJ50I4UgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxOC0wNi0yNlQwMDo1NTozMi0wNDowMA4ejnkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTgtMDYtMjZUMDA6NTU6MzItMDQ6MDB/QzbFAAAAAElFTkSuQmCC" alt="" /></span><span class="text">Read Articles</span></a>
 
-        <a href="#" class="desktop-item"><span class="icon"><img src="data:image/png;base64,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" alt="" /></span><span class="text">Winamp</span></a>
+        <label  for="windows-winamp-input" class="desktop-item"><span class="icon"><img src="data:image/png;base64,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" alt="" /></span><span class="text">Winamp</span></label>
+
     </div>
     <div id="all-windows">
         <div class="window ie windows-box-shadow">
@@ -210,6 +212,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="window trash windows-box-shadow">
             <div class="header"><label for="windows-trash-input-on-top">Recycle Bin</label>
                 <div class="header-buttons">
@@ -273,6 +277,7 @@
                 </label>
             </div>
         </div>
+
         <div class="window notepad windows-box-shadow">
             <div class="header"><label for="windows-notepad-input-on-top">Notepad</label>
                 <div class="header-buttons">
@@ -290,6 +295,18 @@
                 <textarea></textarea>
             </div>
         </div>
+
+
+        <!-- testin winamp window -->
+        <div class="window winamp windows-box-shadow">
+          
+            <div class="content">
+                <iframe src="winapm.html" frameborder="0"></iframe>
+            </div>
+        </div>
+        <!-- end -->
+
+
       <div class="window minesweeper windows-box-shadow">
             <div class="header"><label for="windows-minesweeper-input-on-top">Minesweeper</label>
                 <div class="header-buttons">
